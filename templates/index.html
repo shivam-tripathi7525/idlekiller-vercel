@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDLEKILLER - Chat & Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Authorization Page -->
+    <div class="auth-page" id="auth-page">
+        <div class="auth-container">
+            <h1>IDLEKILLER</h1>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="login-btn">Login</button>
+            <p>Not registered? <a href="#" id="signup-link">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div class="app-container" id="app-container" style="display: none;">
+        <!-- Room Selection -->
+        <div class="room-container" id="room-container">
+            <div class="room-header">
+                <h2 id="room-header-title">Select a Room</h2>
+                <button id="blogs-btn">Blogs</button>
+                <button id="logout-btn">Logout</button>
+            </div>
+            <div class="room-list" id="room-list"></div>
+            <div class="room-create" id="room-create" style="display: none;">
+                <input type="text" id="room-name" placeholder="New Room Name">
+                <button id="create-room-btn">Create Room</button>
+            </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div class="chat-container" id="chat-container" style="display: none;">
+            <div class="chat-header">
+                <h2 id="chat-room-name">Chat Room</h2>
+                <input type="text" id="invite-link" readonly value="Loading invite...">
+                <button id="copy-invite-btn">Copy Invite</button>
+                <label class="mode-toggle">
+                    <input type="checkbox" id="mode-toggle">
+                    <span>Professional Mode</span>
+                </label>
+                <button id="back-to-rooms-btn">Back to Rooms</button>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="message-input" placeholder="Say something...">
+                <button id="emoji-btn">😊</button>
+                <button id="send-btn">➤</button>
+            </div>
+            <div class="emoji-picker" id="emoji-picker" style="display: none;">
+                <span class="emoji" data-emoji="😊">😊</span>
+                <span class="emoji" data-emoji="😂">😂</span>
+                <span class="emoji" data-emoji="👍">👍</span>
+                <span class="emoji" data-emoji="❤️">❤️</span>
+                <span class="emoji" data-emoji="😢">😢</span>
+                <span class="emoji" data-emoji="🔥">🔥</span>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="blog-container" id="blog-container" style="display: none;">
+            <div class="blog-header">
+                <h2>Your Blogs</h2>
+                <button id="back-to-rooms-btn-blog">Back to Rooms</button>
+            </div>
+            <div class="blog-input-container">
+                <textarea id="blog-input" placeholder="Write your thoughts..."></textarea>
+                <button id="post-blog-btn">Post</button>
+            </div>
+            <div class="blog-posts" id="blog-posts"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
